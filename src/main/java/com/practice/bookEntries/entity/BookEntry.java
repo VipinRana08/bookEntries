@@ -6,7 +6,12 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Document(collection = "book_entries")
+@Getter
+@Setter
 public class BookEntry {
     
     @Id
@@ -15,39 +20,7 @@ public class BookEntry {
     private String genre;
     private String author;
     private String description;
+    private boolean status;
     private LocalDateTime date;
-
-    
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getGenre() {
-        return genre;
-    }
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-    public String getAuthor() {
-        return author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public LocalDateTime getDate() {
-        return date;
-    }
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
     
 }
