@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -23,6 +24,7 @@ public class User {
     @NonNull
     private String userName;
     @NonNull
+    @JsonIgnore
     private String userPassword;
     @DBRef
     List<BookEntry> bookEntries = new ArrayList<>();
