@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Document(collection = "book_entries")
@@ -16,6 +17,7 @@ public class BookEntry {
     
     @Id
     private ObjectId id;
+    @NonNull
     private String title;
     private String genre;
     private String author;

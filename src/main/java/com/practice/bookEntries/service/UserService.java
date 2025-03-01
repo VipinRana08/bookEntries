@@ -1,10 +1,13 @@
 package com.practice.bookEntries.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.practice.bookEntries.entity.User;
@@ -16,8 +19,15 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void saveEntry(User entry){
-        repository.save(entry);
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    public void saveEntry(User user){
+        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
+        user.setRoles(Arrays.asList("USER"));
+        repository.save(user);
+    }
+
+    public void saveUser(User user){
+        repository.save(user);
     }
 
     public List<User> getAll(){

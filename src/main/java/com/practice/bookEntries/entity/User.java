@@ -26,4 +26,5 @@ public class User {
     private String userPassword;
     @DBRef
     List<BookEntry> bookEntries = new ArrayList<>();
+    private List<String> roles;
 }
